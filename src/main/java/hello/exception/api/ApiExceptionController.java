@@ -14,8 +14,12 @@ public class ApiExceptionController {
         if(id.equals("ex")){
             throw new RuntimeException("wrong user");
         }
+        if(id.equals("bad")){
+            throw new IllegalArgumentException("wrong url");
+        }
         return new MemberDto(id, "test-member-"+id);
     }
+
 
     @Data
     @AllArgsConstructor
