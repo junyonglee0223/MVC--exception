@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>500 - Not Found</title>
+    <title>500 - Internal Server Error</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -32,6 +32,23 @@
             margin-bottom: 20px;
         }
 
+        .error-details {
+            text-align: left;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .error-details p {
+            margin: 10px 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
         .error-suggestion {
             margin-bottom: 30px;
             font-size: 1rem;
@@ -54,10 +71,21 @@
 </head>
 <body>
 <div class="error-container">
-    <div class="error-code">500</div>
-    <div class="error-message">Internal Server Error</div>
+    <div class="error-code" th:text="${status}">500</div>
+    <div class="error-message" th:text="${error}">Internal Server Error</div>
     <div class="error-suggestion">
-        Something went wrong on our end. Please try again later.
+        <p th:text="${message}">Something went wrong on our end. Please try again later.</p>
+    </div>
+    <div class="error-details">
+        <p><strong>Timestamp:</strong> <span th:text="${timestamp}"></span></p>
+        <p><strong>Path:</strong> <span th:text="${path}"></span></p>
+        <p><strong>Status:</strong> <span th:text="${status}"></span></p>
+        <p><strong>Message:</strong> <span th:text="${message}"></span></p>
+        <p><strong>Error:</strong> <span th:text="${error}"></span></p>
+        <p><strong>Exception:</strong> <span th:text="${exception}"></span></p>
+        <p><strong>Errors:</strong> <span th:text="${errors}"></span></p>
+        <p><strong>Trace:</strong></p>
+        <pre th:text="${trace}"></pre>
     </div>
     <a class="home-link" href="/">Return to Home</a>
 </div>
