@@ -1,5 +1,6 @@
 package hello.exception.api;
 
+import hello.exception.exception.UserException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,9 @@ public class ApiExceptionController {
         }
         if(id.equals("bad")){
             throw new IllegalArgumentException("wrong url");
+        }
+        if(id.equals("user-ex")){
+            throw new UserException("user error occurs!!");
         }
         return new MemberDto(id, "test-member-"+id);
     }
