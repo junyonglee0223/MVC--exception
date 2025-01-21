@@ -13,6 +13,11 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 public class ApiExceptionController {
 
+    @GetMapping("/api/default-handler-ex")
+    public String defaultException(@PathVariable Integer data){
+        return "ok";
+    }
+
     @GetMapping("/api/response-status-ex1")
     public String responseStatusEx1(){
         throw new BadRequestException();
